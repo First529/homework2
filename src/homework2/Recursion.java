@@ -16,15 +16,14 @@ public class Recursion {
 	 * @param list of any kind of object. The elements are not null.
 	 * @return reference to the list parameter with consecutive duplicates removed.
 	 */
-	public static List unique(List list) {
-		if (j >= list.size()) return list;
-		if (list.get(i).equals(list.get(j))) {
-			list.remove(i);
-			return unique(list);
-		} else {
-			i++; j++;
+	public static List<?> unique(List<?> list) {
+		if (list.size() < 2)
+			return list;
+		if (list.get(0) == list.get(1)) {
+			list.remove(1);
 			return unique(list);
 		}
+		return unique(list.subList(1, list.size()));
 	}
 	/**
 	 * More effective way of finding fibonacci's number.
